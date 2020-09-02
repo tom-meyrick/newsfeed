@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "../axiosConfig";
+import { Link } from "react-router-dom";
 
 class Articles extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Articles extends Component {
         <ul class="list-group">
           {articles.map((article) => (
             <li class="list-group-item" key={article.id}>
-              {article.title}
+              <Link to={`/news/${article.id}`}>{article.title}</Link>
             </li>
           ))}
         </ul>
