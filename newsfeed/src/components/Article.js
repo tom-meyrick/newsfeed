@@ -24,11 +24,13 @@ class Articles extends Component {
       <>
         <h2>{article.title}</h2>
         <p>{article.content}</p>
-        {tags.map((tag) => (
-          <span class="btn btn-primary" key={tag.id}>
-            {tag}
-          </span>
-        ))}
+        <div class="d-flex justify-content-end">
+          {tags.map((tag) => (
+            <span class="btn btn-primary" key={tag.id}>
+              {tag}
+            </span>
+          ))}
+        </div>
       </>
     );
   }
