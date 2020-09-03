@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "../axiosConfig";
+import Comments from "./Comments";
 
-class Articles extends Component {
+class Article extends Component {
   constructor(props) {
     super(props);
 
@@ -11,7 +12,7 @@ class Articles extends Component {
     };
   }
   componentDidMount() {
-    let { id } = this.props;
+    const { id } = this.props;
     axios.get(`/articles/${id}`).then(({ data }) => {
       this.setState({ article: data.data, tags: data.data.tags });
     });
@@ -19,6 +20,7 @@ class Articles extends Component {
 
   render() {
     const { article, tags } = this.state;
+    const { id } = this.props;
     console.log(article);
     return (
       <>
@@ -26,14 +28,15 @@ class Articles extends Component {
         <p>{article.content}</p>
         <div class="d-flex justify-content-end">
           {tags.map((tag) => (
-            <span class="btn btn-primary" key={tag.id}>
+            <span class="badge badge-pill badge-primary m-1" key={tag.id}>
               {tag}
             </span>
           ))}
         </div>
+        <Comments articleID={id} />
       </>
     );
   }
 }
 
-export default Articles;
+export default Article;

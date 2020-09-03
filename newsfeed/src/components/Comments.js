@@ -1,23 +1,32 @@
 import React, { Component } from "react";
+import axios from "../axiosConfig";
 
 class Comments extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      // Initial state
+      comments: [],
     };
   }
-  handleEvent = () => {
-    this.setState({
-      // Update state
+  componentDidMount() {
+    const { articleID } = this.props;
+    axios.get(`/articles/${articleID}/comments`).then(({ data }) => {
+      this.setState({ comments: data.data });
+      console.log(data.data);
     });
-  };
+  }
 
   render() {
-    return (
-      <p>Hello world!</p> // JSX
-    );
+    const { comments } = this.state;
+    return comments
+      ? comments.map((comment) => (
+          <div class="well" key={comment.id}>
+            <h6>{comment.email}</h6>
+            <p>{comment.comment}</p>
+          </div>
+        ))
+      : null;
   }
 }
 

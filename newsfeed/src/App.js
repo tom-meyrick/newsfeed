@@ -6,7 +6,7 @@ import FourOhFour from "./components/FourOhFour";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => (
-  <div class="container">
+  <div className="container">
     <Router>
       <Header />
       <Switch>
