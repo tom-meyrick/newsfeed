@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "../axiosConfig";
 
-class CreateArticle extends Component {
+class EditArticle extends Component {
   constructor(props) {
     super(props);
 
@@ -17,6 +17,17 @@ class CreateArticle extends Component {
     this.handleArticle = this.handleArticle.bind(this);
     this.handleTags = this.handleTags.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+    axios.get(`/articles/${id}`).then(({ data }) => {
+      this.setState({
+        title: data.data.title,
+        article: data.data.content,
+        tags: data.data.tags,
+      });
+    });
   }
 
   handleTitle(e) {
@@ -33,9 +44,10 @@ class CreateArticle extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    let { title, article, tags } = this.state;
+    const { id } = this.props;
+    const { title, article, tags } = this.state;
     axios
-      .post("/articles", {
+      .put(`/articles/${id}`, {
         title: title,
         content: article,
         tags: tags.split(", "),
@@ -85,6 +97,4 @@ class CreateArticle extends Component {
   }
 }
 
-//onSubmit on form rather than button
-
-export default CreateArticle;
+export default EditArticle;

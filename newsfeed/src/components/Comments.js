@@ -23,7 +23,7 @@ class Comments extends Component {
       <>
         <h3>Comments</h3>
         {comments.map((comment) => (
-          <div class="well" key={comment.id}>
+          <div className="well" key={comment.id}>
             <h6>{comment.email}</h6>
             <p>{comment.comment}</p>
           </div>

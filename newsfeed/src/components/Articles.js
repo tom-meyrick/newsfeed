@@ -22,15 +22,13 @@ class Articles extends Component {
     return !loaded ? (
       <p>Loading...</p>
     ) : (
-      <>
-        <ul class="list-group">
-          {articles.map((article) => (
-            <li class="list-group-item" key={article.id}>
-              <Link to={`/news/${article.id}`}>{article.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </>
+      <ul class="list-group">
+        {articles.map((article) => (
+          <li class="list-group-item" key={article.id}>
+            <Link to={`/news/${article.id}`}>{article.title}</Link>
+          </li>
+        ))}
+      </ul>
     );
   }
 }

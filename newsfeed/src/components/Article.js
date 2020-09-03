@@ -8,7 +8,7 @@ class Article extends Component {
     super(props);
 
     this.state = {
-      article: [],
+      article: {}, // Article returns an object, so we use this instead array
       tags: [],
     };
   }
