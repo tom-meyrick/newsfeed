@@ -19,14 +19,17 @@ class Comments extends Component {
 
   render() {
     const { comments } = this.state;
-    return comments
-      ? comments.map((comment) => (
+    return comments.length > 0 ? (
+      <>
+        <h3>Comments</h3>
+        {comments.map((comment) => (
           <div class="well" key={comment.id}>
             <h6>{comment.email}</h6>
             <p>{comment.comment}</p>
           </div>
-        ))
-      : null;
+        ))}
+      </>
+    ) : null;
   }
 }
 

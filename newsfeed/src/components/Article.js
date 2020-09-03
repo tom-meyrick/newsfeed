@@ -21,7 +21,6 @@ class Article extends Component {
   render() {
     const { article, tags } = this.state;
     const { id } = this.props;
-    console.log(article);
     return (
       <>
         <h2>{article.title}</h2>
