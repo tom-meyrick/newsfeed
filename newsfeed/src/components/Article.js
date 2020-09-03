@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "../axiosConfig";
 import Comments from "./Comments";
+import CreateComment from "./CreateComment";
 
 class Article extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Article extends Component {
           ))}
         </div>
         <Comments articleID={id} />
+        <CreateComment articleID={id} />
       </>
     );
   }
